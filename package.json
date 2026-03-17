@@ -1,0 +1,21 @@
+{
+  "name": "deployment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "c8 mocha"
+  },
+  "author": "Kaisa Juhola",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.3.0"
+  },
+  "overrides": {
+    "serialize-javascript": "7.0.3",
+    "diff": "^8.0.3"
+  }
+}
