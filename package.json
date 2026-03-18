@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "mocha",
-    "coverage": "c8 mocha"
+    "coverage": "c8 --all mocha"
   },
   "author": "Kaisa Juhola",
   "license": "MIT",
@@ -17,5 +17,21 @@
   "overrides": {
     "serialize-javascript": "7.0.3",
     "diff": "^8.0.3"
+  },
+  "c8": {
+    "include": [
+      "src/*.js"
+    ],
+    "exclude": [
+      "test/**",
+      "src/.internal/**"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  },
+  "dependencies": {
+    "c8": "^11.0.0"
   }
 }
