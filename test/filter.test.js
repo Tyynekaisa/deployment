@@ -17,6 +17,7 @@ describe("filter", () => {
     console.log("Finished filter.js tests.")
   })
 
+  // Normal behaviour tests
   describe("normal behaviour", () => {
     it("should filter values based on predicate", () => {
       const arr = [1,2,3,4]

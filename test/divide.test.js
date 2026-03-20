@@ -1,6 +1,6 @@
-// isEmpty.test.js
+// divide.test.js
 // 20.3.2026
-// Unit tests for isEmpty.js using Chai's expect style
+// Unit tests for divide.js using Chai's expect style
 // Author: Kaisa Juhola
 
 import { expect } from "chai"

@@ -17,6 +17,7 @@ describe("at", () => {
     console.log("Finished at.js tests.")
   })
 
+  // Normal behaviour tests
   const obj = { a: [{ b: { c: 3 } }, 4] }
 
   describe("normal behaviour", () => {
@@ -26,6 +27,7 @@ describe("at", () => {
     })
   })
 
+  // Invalid input tests
   describe("invalid input", () => {
     it("should handle null object", () => {
       const result = at(null, ['a'])
@@ -33,6 +35,7 @@ describe("at", () => {
     })
   })
 
+  // Empty input tests
   describe("empty input", () => {
     it("should return empty array when no paths provided", () => {
       const result = at(obj)
@@ -40,6 +43,7 @@ describe("at", () => {
     })
   })
 
+  // Edge cases tests
   describe("edge cases", () => {
     it("should return undefined for non-existing path", () => {
       const result = at(obj, ['a[2]'])

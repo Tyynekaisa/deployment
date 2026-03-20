@@ -30,6 +30,17 @@ describe("isEmpty", () => {
     it("should return false for non-empty string", () => {
       expect(isEmpty("abc")).to.equal(false)
     })
+
+    it("should return false for non-empty Map", () => {
+      const map = new Map()
+      map.set("a", 1)
+      expect(isEmpty(map)).to.equal(false)
+    })
+
+    it("should return false for non-empty Set", () => {
+      const set = new Set([1])
+      expect(isEmpty(set)).to.equal(false)
+    })
   })
 
   // Invalid input tests
@@ -56,6 +67,14 @@ describe("isEmpty", () => {
     it("should return true for empty string", () => {
       expect(isEmpty("")).to.equal(true)
     })
+
+    it("should return true for empty Map", () => {
+      expect(isEmpty(new Map())).to.equal(true)
+    })
+
+    it("should return true for empty Set", () => {
+      expect(isEmpty(new Set())).to.equal(true)
+    })
   })
 
   // Edge case tests
@@ -66,27 +85,6 @@ describe("isEmpty", () => {
 
     it("should return true for booleans", () => {
       expect(isEmpty(true)).to.equal(true)
-    })
-
-    // Maps
-    it("should return true for empty Map", () => {
-      expect(isEmpty(new Map())).to.equal(true)
-    })
-
-    it("should return false for non-empty Map", () => {
-      const map = new Map()
-      map.set("a", 1)
-      expect(isEmpty(map)).to.equal(false)
-    })
-
-    // Sets
-    it("should return true for empty Set", () => {
-      expect(isEmpty(new Set())).to.equal(true)
-    })
-
-    it("should return false for non-empty Set", () => {
-      const set = new Set([1])
-      expect(isEmpty(set)).to.equal(false)
     })
 
     // Array-like objects

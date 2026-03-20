@@ -17,6 +17,7 @@ describe("camelCase", () => {
     console.log("Finished camelCase.js tests.")
   })
 
+  // Normal behaviour tests
   describe("normal behaviour", () => {
     it("should convert string to camelCase", () => {
       const str = "Foo Bar"
@@ -46,6 +47,7 @@ describe("camelCase", () => {
       const str = "Foo"
       const result = camelCase(str)
       expect(result).to.equal("foo")
+    })
 
     it("should handle numbers in string", () => {
       const str = "version 2 update"
@@ -60,8 +62,7 @@ describe("camelCase", () => {
     })
   })
 
-  })
-
+  // Invalid input tests
   describe("invalid input", () => {
     it("should return empty string when input is null", () => {
       const result = camelCase(null)
@@ -69,6 +70,7 @@ describe("camelCase", () => {
     })
   })
 
+  // Empty input tests
   describe("empty input", () => {
       it("should return empty string when input is empty", () => {
       const str = ""
@@ -77,6 +79,7 @@ describe("camelCase", () => {
       }) 
   })
 
+  // Edge cases tests
   describe("edge cases", () => {
     it("should handle string with only special characters", () => {
       const str = "!!!"

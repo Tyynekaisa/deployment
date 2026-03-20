@@ -17,6 +17,7 @@ describe("add", () => {
     console.log("Finished add.js tests.")
   })
 
+  // Normal behaviour tests
   describe("normal behaviour", () => {
     it("should add two numbers (6, 4)", () => {
       const result = add(6, 4)

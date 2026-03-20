@@ -17,6 +17,7 @@ describe("castArray", () => {
     console.log("Finished castArray.js tests.")
   })
 
+  // Normal behaviour tests
   describe("normal behaviour", () => {
     it("should wrap value into array", () => {
       expect(castArray(1)).to.deep.equal([1])
@@ -27,26 +28,29 @@ describe("castArray", () => {
     })
   })
 
+  // Invalid input tests
   describe("invalid input", () => {
-    it("should handle undefined explicitly passed", () => {
+    it("should handle undefined", () => {
       expect(castArray(undefined)).to.deep.equal([undefined])
     })
-  })
 
-  describe("empty input", () => {
-    it("should return [undefined] when no arguments given", () => {
-      expect(castArray()).to.deep.equal([undefined])
+    it("should handle null", () => {
+      expect(castArray(null)).to.deep.equal([null])
     })
   })
 
+  // Empty input tests
+  describe("empty input", () => {
+    it("should return empty array [] when no arguments given", () => {
+      expect(castArray()).to.deep.equal([])
+    })
+  })
+
+  // Edge cases tests
   describe("edge cases", () => {
     it("should return same array if already array", () => {
       const arr = [1,2,3]
       expect(castArray(arr)).to.equal(arr)
-    })
-
-    it("should wrap null into array", () => {
-      expect(castArray(null)).to.deep.equal([null])
     })
 
     it("should wrap object into array", () => {

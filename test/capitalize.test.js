@@ -17,6 +17,7 @@ describe("capitalize", () => {
     console.log("Finished capitalize.js tests.")
   })
 
+  // Normal behaviour tests
   describe("normal behaviour", () => {
     it("should capitalize first letter and lowercase rest", () => {
       expect(capitalize("FRED")).to.equal("Fred")
@@ -26,7 +27,8 @@ describe("capitalize", () => {
       expect(capitalize("fred")).to.equal("Fred")
     })
   })
-
+  
+  // Invalid input tests
   describe("invalid input", () => {
     it("should handle null input", () => {
       expect(capitalize(null)).to.equal("")
