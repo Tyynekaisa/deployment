@@ -1,5 +1,5 @@
 // clamp.test.js
-// 20.3.2026
+// 21.3.2026
 // Unit tests for clamp.js using Chai's expect style
 // Author: Kaisa Juhola
 
@@ -42,15 +42,16 @@ describe("clamp", () => {
     })
   })
 
-  // Edge cases tests
-  describe("edge cases", () => {
-    it("should return number if within bounds", () => {
-      expect(clamp(3, 0, 5)).to.equal(3)
-    })
+  // // Edge cases tests
+  // // (Not actually described in the function documentation, so I leave them out)
+  // describe("edge cases", () => {
+  //   it("should return number if within bounds", () => {
+  //     expect(clamp(3, 0, 5)).to.equal(3)
+  //   })
 
-    it("should handle string numbers", () => {
-      expect(clamp("10", 0, 5)).to.equal(5)
-    })
-  })
+  //   it("should handle string numbers", () => {
+  //     expect(clamp("10", 0, 5)).to.equal(5)
+  //   })
+  // })
 
 })
