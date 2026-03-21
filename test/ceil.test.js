@@ -1,8 +1,9 @@
 // ceil.test.js
 // 17.3.2026
 // Unit tests for ceil.js using Chai's expect style
-// Author: Kaisa Juholaimport { expect } from "chai"
+// Author: Kaisa Juhola
 
+import { expect } from "chai"
 import ceil from "../src/ceil.js"
 
 describe("ceil", () => {
