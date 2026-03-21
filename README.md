@@ -363,16 +363,16 @@ After fixing they passed all tests.
 * filter
 
 ![divide.js error](/img/divide_error.png)  
-**Image 2a:** Error in divide.js
+**Image 3a:** Error in divide.js
 
 ![divide.js fix](/img/divide_fix.png)  
-**Image 2b:** Fixed divide function
+**Image 3b:** Fixed divide function
 
 ![filter.js error](/img/filter_error.png)  
-**Image 3a:** Error in filter.js
+**Image 4a:** Error in filter.js
 
 ![filter.js fix](/img/filter_fix.png)  
-**Image 3b:** Fixed filter function
+**Image 4b:** Fixed filter function
 
 ## Issue Tracking
 
