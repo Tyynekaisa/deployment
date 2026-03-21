@@ -71,7 +71,10 @@ npm run coverage
 
 <!-- Coverage reports are generated in:
 
-coverage/lcov.info -->
+coverage/lcov.info 
+Is this needed?-->
+
+
 
 ## Unit Testing
 
