@@ -237,6 +237,8 @@ Workflow file is located to [.github/workflows/test.yml](/.github/workflows/test
 ![Github Actions Workflow Code](/img/workflow.png)  
 **Image1:** GitHub Actions workflow
 
+All Test & Coverage workflow runs are available for scoping at: [https://github.com/Tyynekaisa/deployment/actions/workflows/test.yml](https://github.com/Tyynekaisa/deployment/actions/workflows/test.yml)
+
 ## Coveralls Integration
 
 Coverage reporting is handled by [Coveralls](https://coveralls.io/).
@@ -246,7 +248,6 @@ The GitHub repository was connected to Coveralls, and coverage data is automatic
 ### How it works
 
 * Coverage is generated using c8
-<!-- * Output file: coverage/lcov.info  -->
 * GitHub Actions sends the report to Coveralls
 * Coveralls displays coverage statistics and trends
 
@@ -319,6 +320,12 @@ During testing, several issues were discovered in the library. The findings are 
 
 The testing process revealed both **critical** and **minor** issues in the library.
 
+![Test results](/img/test_results_before_round1.png)  
+**Image 3a:** Amount of passing and failing tests
+
+![Test results after bug fixing](/img/test_results_after_round1.png)  
+**Image 3b:** Amount of passing and failing tests after first round of bug fixing **(Round 1)**
+
 ### Critical Errors
 
 Several functions contained critical bugs that caused most or all test cases to fail. These functions are not usable in their current state and require immediate fixes.
@@ -360,21 +367,21 @@ After applying the fixes, the functions were verified through unit tests and pas
 * filter
 
 ![divide.js error](/img/divide_error.png)  
-**Image 3a:** Error in divide.js
+**Image 4a:** Error in divide.js
 
 ![divide.js fix](/img/divide_fix.png)  
-**Image 3b:** Fixed divide function
+**Image 4b:** Fixed divide function
 
 ![filter.js error](/img/filter_error.png)  
-**Image 4a:** Error in filter.js
+**Image 5a:** Error in filter.js
 
 ![filter.js fix](/img/filter_fix.png)  
-**Image 4b:** Fixed filter function
+**Image 5b:** Fixed filter function
 
 ## Issue Tracking
 
 ![Issues](/img/issues.png)  
-**Image 5:** Open issues **before** first round of bug fixing **(Round 1)**
+**Image 6:** Open issues **before** first round of bug fixing **(Round 1)**
 
 All issues are available here:
 
