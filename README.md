@@ -3,7 +3,7 @@
 Course: **AT00BY10-3012 Ohjelmistojen ylläpito ja testaus**  
 Assignment: **VII - Deployment**  
 Author: **Kaisa Juhola**  
-Updated: **21.3.2026**
+Updated: **22.3.2026**
 
 [![Coverage Status](https://coveralls.io/repos/github/Tyynekaisa/deployment/badge.svg)](https://coveralls.io/github/Tyynekaisa/deployment)
 
@@ -15,6 +15,8 @@ The goal of this project was to implement unit tests for a given JavaScript util
 
 ```
 .
+│
+├── img/                 # Screenshots for documentation
 │
 ├── src/                 # Library functions
 │   ├── add.js
@@ -39,6 +41,7 @@ The goal of this project was to implement unit tests for a given JavaScript util
 ├── package.json
 └── README.md           # Documentation           
 ```
+
 The src directory contains over 40 utility functions. Tests are written per function and located in the test directory. The .internal directory contains helper functions that were not directly tested.
 
 ## Local Development Environment
@@ -47,8 +50,8 @@ The local environment was set up using:
 
 * **Node.js** (v22.x)
 * **npm** for dependency management
-* **Mocha** as the test runner
-* **Chai** using the expect style
+* **Mocha** as the test runner (v11.3.0)
+* **Chai** using the expect style (v6.2.2)
 * **c8** for coverage reporting locally
 
 ### Installation
@@ -69,26 +72,16 @@ npm test
 npm run coverage
 ```
 
-<!-- Coverage reports are generated locally in:
+### Local Coverage Tool: c8
 
-coverage/lcov.info 
-Is this actually needed ??-->
+This project uses c8 for generating local coverage reports. It is a lightweight tool built on Node.js’s native V8 coverage, which makes it simple to set up and use without additional configuration.
 
-### Coverage Tool: c8
+Running coverage locally provides quick feedback during development and helps identify untested areas before pushing changes to GitHub. Although the CI pipeline ultimately reports coverage to Coveralls, local coverage runs make it easier to:
 
-The coverage tool chosen for this project was c8.
+* verify that new tests increase coverage
+* spot missing branches and edge cases
 
-The main reason for selecting c8 is that it is a lightweight and modern coverage tool that works directly with Node.js built-in V8 coverage. This makes it simple to use without requiring complex configuration.
-
-Another key reason was the ability to generate coverage reports locally. Running coverage locally allowed faster feedback during development and made it easier to identify untested code areas before pushing changes to GitHub.
-
-Although coverage is ultimately reported via Coveralls in the CI pipeline, generating coverage locally helped:
-
-* verify that tests actually increase coverage
-* debug missing branches and edge cases
-* ensure the required 60% threshold is reached before CI execution
-
-Altough local coverage execution is not strictly required for the GitHub Actions workflow, it significantly improved my development efficiency and understanding.
+Altough local coverage execution is not required for the GitHub Actions workflow, it significantly improved my development efficiency and understanding.
 
 ### About coverage-% and included files
 
@@ -335,6 +328,7 @@ Several functions contained critical bugs that caused most or all test cases to 
 * camelCase
 * ceil
 * chunk
+* clamp
 * compact
 * countBy
 
@@ -354,10 +348,13 @@ Some functions worked correctly in general but failed in specific edge cases or 
 
 These issues require further investigation to determine whether the implementation or the tests need adjustment.
 
-### Fixed before testing
+### Fixed Before Testing
 
-Some of the functions contained such obvious errors that I noticed them immediately and fixed before testing. It was easier and faster to do so, than to test first and write issues for them.  
-After fixing they passed all tests.
+Some functions contained clear and critical implementation errors that were identified during an initial code review before writing unit tests. Those issues were straightforward to diagnose and fix, and addressing them early helped streamline the testing process by avoiding unnecessary failing test cases caused by obvious defects.
+
+After applying the fixes, the functions were verified through unit tests and passed all test cases.
+
+**Functions:**
 
 * divide
 * filter
@@ -376,19 +373,65 @@ After fixing they passed all tests.
 
 ## Issue Tracking
 
+![Issues](/img/issues.png)  
+**Image 5:** Open issues **before** first round of bug fixing **(Round 1)**
+
 All issues are available here:
-[https://github.com/Tyynekaisa/deployment/issues](https://github.com/Tyynekaisa/deployment/issues)
+
+* [Open issues](https://github.com/Tyynekaisa/deployment/issues)
+* [Closed issues](https://github.com/Tyynekaisa/deployment/issues?q=is%3Aissue%20state%3Aclosed)
 
 ### Notes
 
 When troubleshooting and fixing issues, dependencies on other functions should be taken into consideration. If the bug that caused the test to fail is not found in the tested function, it may be in one of the imported functions.
+
+**For example:**
+
+* The chunk function originally contained a logic error where the result index was not incremented. This was fixed.
+* However, some failing test cases were traced to a bug in the slice function, which is used internally by chunk. This issue was documented separately and not fixed, as it originates from a dependency.
 
 ## Evaluation of Library Quality
 
 Based on the testing results:
 
 * A significant portion of the library functions work correctly
-* However, multiple critical functions contain major bugs
-* Some functions behave inconsistently with their documentation
+* However, multiple critical functions initially contained major bugs that prevented correct usage
+* Several functions also exhibited inconsistencies with their expected behavior or documentation
 
-Therefore, **the library is not production-ready** in its current state without fixes.
+A first round of bug fixing (**Round 1**) has been completed, focusing on critical issues that caused complete or near-complete test failures. These fixes significantly improved the usability of the library.
+
+Despite these improvements, the testing process revealed that:
+
+* Bugs were relatively common across the tested functions
+* Some issues originated from internal dependencies (e.g. `slice`), affecting multiple higher-level functions
+* Not all functions in the library have been tested yet
+
+This suggests that additional undiscovered issues may still exist in untested parts of the codebase.
+
+### Production Readiness
+
+At this stage, the library **cannot be considered fully production-ready**.
+
+Before production use, the following steps are recommended:
+
+* Extend test coverage to remaining untested functions
+* Fix remaining critical and minor issues
+* Perform regression testing after each fix
+* Review dependency functions carefully, as bugs may propagate between modules
+
+### Trade-offs and Practical Considerations
+
+Not all edge cases may need to be fixed immediately. In some cases:
+
+* Fixing rare edge cases may require disproportionate effort
+* The impact of certain bugs may be minimal in real-world usage
+
+Therefore, it may be reasonable to prioritize fixes based on:
+
+* Severity of the bug
+* Frequency of occurrence
+* Impact on core functionality
+
+### Conclusion
+
+While the library shows potential and contains several correctly functioning components, the overall quality is currently inconsistent. Further testing and stabilization are required before it can be reliably used in production environments.
